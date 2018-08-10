@@ -7,7 +7,6 @@ const YouTube = require('simple-youtube-api');
 const youtube = new YouTube("AIzaSyAdORXg7UZUo7sePv97JyoDqtQVi3Ll0b8");
 const queue = new Map();
 const client = new Discord.Client();
-const preifx = '!';
 client.on('ready', () => {
     console.log(`Alhassny Orders.`);
     client.user.setActivity('Giants Store.',{type: 'WATCHING'});
@@ -17,6 +16,7 @@ client.on('ready', () => {
 
 const moment = require("moment");
 client.on('message', async message => {
+	var prefix = '$';
     if (!message.channel.guild) return undefined;
     let time = moment().format('Do MMMM YYYY , hh:mm');
     let args = message.content.split(" ").slice(1).join(" ");
@@ -47,7 +47,6 @@ client.on('message', async message => {
     });
     }
 });
-
 
 
 client.on('message', async msg => { // eslint-disable-line
@@ -242,7 +241,7 @@ function play(guild, song) {
 }
 
 const adminprefix = "#";//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-const devs = ['274923685985386496'];//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
+const devs = ['449313863494664214'];//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
 client.on('message', message => {//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
   var argresult = message.content.split(` `).slice(1).join(' ');//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
     if (!devs.includes(message.author.id)) return;//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
@@ -268,7 +267,7 @@ if (message.content.startsWith(adminprefix + 'setT')) {
 });
 
 client.on("message", message => {
- if (message.content === `${prefix}help`) {
+ if (message.content === `$help`) {
   const embed = new Discord.RichEmbed() //by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
       .setColor("#000000")//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
       .setDescription(`
