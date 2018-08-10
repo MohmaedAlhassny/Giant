@@ -7,45 +7,76 @@ const YouTube = require('simple-youtube-api');
 const youtube = new YouTube("AIzaSyAdORXg7UZUo7sePv97JyoDqtQVi3Ll0b8");
 const queue = new Map();
 const client = new Discord.Client();
+
 client.on('ready', () => {
-    console.log(`Alhassny Orders.`);
-    client.user.setActivity('Giants Store.',{type: 'WATCHING'});
-    client.user.setStatus('idle');
+    console.log(`Logged in as ${client.user.tag}!`);
+    console.log(`in ${client.guilds.size} servers `)
+    console.log(`[Alhassny Orders] ${client.users.size}`)
+    client.user.setStatus("DND");
+    client.user.setActivity('Alhassny Orders.',{type: 'WATCHING'});
 });
+//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
+const prefix = "$";
+const seender = 'لعمل منشن لمرسل الرساله قم بكتابة [المرسل] في الرسالة.';
+const server = 'لكتابة اسم السيرفر قم بكتابة [السيرفر] في الرسالة.';
+const user = 'لعمل منشن للشخص قم بكتابة [العضو] في الرسالة.';
 
-const prefix = '$';
+var success = new Discord.RichEmbed()
+	.setDescription(`تم أرسال رسالتك بنجاح.`)
+	.setColor('GREEN')
+	.setAuthor(message.author.tag, message.author.avatarURL)
 
-const moment = require("moment");
-client.on('message', async message => {
-    if (!message.channel.guild) return undefined;
-    let time = moment().format('Do MMMM YYYY , hh:mm');
-    let args = message.content.split(" ").slice(1).join(" ");
-    if(message.content.startsWith(prefix + "bc")) {
-        if(!message.guild.member(message.author).hasPermission("8")) return message.reply("**# You don't have the needed permissions!**");
-        if(!args) return message.reply("**# Supply a message!**");
-        message.channel.send(`\`\`- Name:\`\`\n${message.author}\n\n\`\`- Date:\`\`\n${time}\n\n\`\`- Message:\`\`\n${args}\n\n__# | You have 15s to say Yes or No__`)
-.then(() => {
-  message.channel.awaitMessages(response => response.content === 'yes', {
-    max: 1,
-    time: 15000,
-    errors: ['time'],
-  })
-  .then((collected) => {
-          message.guild.members.forEach(m => m.sendMessage(args));
-          message.channel.send(`**Done!, Sent the message to: \`${message.guild.members.size}\` members!**`);
-      
-  });
-});
-    } else {
-          message.channel.awaitMessages(response => response.content === 'no', {
-    max: 1,
-    time: 15000,
-    errors: ['time'],
-  })
-  .then((collected) => {
-      message.channel.send("__- Canceled!__")
-    });
-    }
+
+
+
+
+
+client.on('message', message => {
+   if(!message.channel.guild) return;
+if(message.content.startsWith(prefix + 'bc')) {
+if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
+if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**للأسف لا تمتلك صلاحية** `ADMINISTRATOR`' );
+let args = message.content.split(" ").join(" ").slice(2 + prefix.length);
+let BcList = new Discord.RichEmbed()
+.setThumbnail(message.author.avatarURL)
+.setAuthor(message.author.tag, message.author.avatarURL)
+.setDescription(`**▶ 📝 لأرسال رسالة امبد قم بالضغط على \n ▶ ✏ لأرسال رسالة عادية قم بالضغط على \n ★ ${user} \n ★ ${server} \n ★ ${seender} \n ★ ${memberCount}**`)
+if (!args) return message.reply('**يجب عليك كتابة كلمة او جملة لإرسال البرودكاست**');message.channel.send(BcList).then(msg => {
+msg.react('📝')
+.then(() => msg.react('✏'))
+.then(() =>msg.react('📝'))
+ 
+let EmbedBcFilter = (reaction, user) => reaction.emoji.name === '📝' && user.id === message.author.id;
+let NormalBcFilter = (reaction, user) => reaction.emoji.name === '✏' && user.id === message.author.id;
+ 
+let EmbedBc = msg.createReactionCollector(EmbedBcFilter, { time: 60000 });
+let NormalBc = msg.createReactionCollector(NormalBcFilter, { time: 60000 });
+ 
+ 
+EmbedBc.on("collect", r => {
+ 
+message.channel.send(success).then(m => m.delete(5000));
+message.guild.members.forEach(m => {
+let EmbedRep = args.replace('[السيرفر]' ,message.guild.name).replace('[العضو]', m).replace('[المرسل]', `${message.author}`)
+var bc = new
+Discord.RichEmbed()
+.setColor('RANDOM')
+.setDescription(EmbedRep)
+.setThumbnail(message.author.avatarURL)
+m.send({ embed: bc })
+msg.delete();
+})
+})
+NormalBc.on("collect", r => {
+  message.channel.send(success).then(m => m.delete(5000));
+message.guild.members.forEach(m => {
+let NormalRep = args.replace('[السيرفر]' ,message.guild.name).replace('[العضو]', m).replace('[المرسل]', `${message.author}`)
+m.send(NormalRep);
+msg.delete();
+})
+})
+})
+}
 });
 
 
@@ -241,7 +272,7 @@ function play(guild, song) {
 }
 
 const adminprefix = "#";//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-const devs = ['449313863494664214'];//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
+const devs = ['274923685985386496'];//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
 client.on('message', message => {//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
   var argresult = message.content.split(` `).slice(1).join(' ');//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
     if (!devs.includes(message.author.id)) return;//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
@@ -267,7 +298,7 @@ if (message.content.startsWith(adminprefix + 'setT')) {
 });
 
 client.on("message", message => {
- if (message.content === `$help`) {
+ if (message.content === `${prefix}help`) {
   const embed = new Discord.RichEmbed() //by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
       .setColor("#000000")//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
       .setDescription(`
