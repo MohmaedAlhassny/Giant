@@ -21,7 +21,7 @@ client.on('message', async message => {
     let time = moment().format('Do MMMM YYYY , hh:mm');
     let args = message.content.split(" ").slice(1).join(" ");
     if(message.content.startsWith(prefix + "bc")) {
-        if(!message.guild.member(message.author).hasPermission("MANAGE_SERVER")) return message.reply("**# You don't have the needed permissions!**");
+        if(!message.guild.member(message.author).hasPermission("8")) return message.reply("**# You don't have the needed permissions!**");
         if(!args) return message.reply("**# Supply a message!**");
         message.channel.send(`\`\`- Name:\`\`\n${message.author}\n\n\`\`- Date:\`\`\n${time}\n\n\`\`- Message:\`\`\n${args}\n\n__# | You have 15s to say Yes or No__`)
 .then(() => {
