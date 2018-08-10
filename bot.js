@@ -13,10 +13,10 @@ client.on('ready', () => {
     client.user.setStatus('idle');
 });
 
+const prefix = '$';
 
 const moment = require("moment");
 client.on('message', async message => {
-	var prefix = '$';
     if (!message.channel.guild) return undefined;
     let time = moment().format('Do MMMM YYYY , hh:mm');
     let args = message.content.split(" ").slice(1).join(" ");
