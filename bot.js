@@ -13,73 +13,20 @@ client.on('ready', () => {
     console.log(`in ${client.guilds.size} servers `)
     console.log(`[Alhassny Orders] ${client.users.size}`)
     client.user.setStatus("DND");
-    client.user.setActivity('Alhassny Orders.',{type: 'WATCHING'});
+    client.user.setActivity('Dynasty Music.',{type: 'LISTENING'});
 });
 //by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-const prefix = "$";
-const seender = 'لعمل منشن لمرسل الرساله قم بكتابة [المرسل] في الرسالة.';
-const server = 'لكتابة اسم السيرفر قم بكتابة [السيرفر] في الرسالة.';
-const user = 'لعمل منشن للشخص قم بكتابة [العضو] في الرسالة.';
-
+const prefix = "N";
 
 client.on('message', message => {
-   if(!message.channel.guild) return;
-	
-var success = new Discord.RichEmbed()
-	.setDescription(`تم أرسال رسالتك بنجاح.`)
-	.setColor('GREEN')
-	.setAuthor(message.author.tag, message.author.avatarURL)
-
-
-
-
-
-if(message.content.startsWith(prefix + 'bc')) {
-if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
-if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**للأسف لا تمتلك صلاحية** `ADMINISTRATOR`' );
-let args = message.content.split(" ").join(" ").slice(2 + prefix.length);
-let BcList = new Discord.RichEmbed()
-.setThumbnail(message.author.avatarURL)
-.setAuthor(message.author.tag, message.author.avatarURL)
-.setDescription(`**▶ 📝 لأرسال رسالة امبد قم بالضغط على \n ▶ ✏ لأرسال رسالة عادية قم بالضغط على \n ★ ${user} \n ★ ${server} \n ★ ${seender}**`)
-if (!args) return message.reply('**يجب عليك كتابة كلمة او جملة لإرسال البرودكاست**');message.channel.send(BcList).then(msg => {
-msg.react('📝')
-.then(() => msg.react('✏'))
-.then(() =>msg.react('📝'))
- 
-let EmbedBcFilter = (reaction, user) => reaction.emoji.name === '📝' && user.id === message.author.id;
-let NormalBcFilter = (reaction, user) => reaction.emoji.name === '✏' && user.id === message.author.id;
- 
-let EmbedBc = msg.createReactionCollector(EmbedBcFilter, { time: 60000 });
-let NormalBc = msg.createReactionCollector(NormalBcFilter, { time: 60000 });
- 
- 
-EmbedBc.on("collect", r => {
- 
-message.channel.send(success).then(m => m.delete(5000));
-message.guild.members.forEach(m => {
-let EmbedRep = args.replace('[السيرفر]' ,message.guild.name).replace('[العضو]', m).replace('[المرسل]', `${message.author}`)
-var bc = new
-Discord.RichEmbed()
-.setColor('RANDOM')
-.setDescription(EmbedRep)
-.setThumbnail(message.author.avatarURL)
-m.send({ embed: bc })
-msg.delete();
-})
-})
-NormalBc.on("collect", r => {
-  message.channel.send(success).then(m => m.delete(5000));
-message.guild.members.forEach(m => {
-let NormalRep = args.replace('[السيرفر]' ,message.guild.name).replace('[العضو]', m).replace('[المرسل]', `${message.author}`)
-m.send(NormalRep);
-msg.delete();
-})
-})
-})
-}
+	if(message.content === prefix + 'joinplz') {
+		    const voiceChannel = message.member.voiceChannel;
+		    if (!voiceChannel) {
+      return message.reply(`يرجى أن تكون في قناة صوتيه أولا!`);
+    }
+		voiceChannel.join()
+	}
 });
-
 
 client.on('message', async msg => { // eslint-disable-line
 	if (msg.author.bot) return undefined;
@@ -317,6 +264,217 @@ ${prefix}queue ⇏ لمعرفة قآئمة التشغيل
    }
    }); 
    
+
+const Discord = require('discord.js');
+
+
+
+const firstm = new Discord.Client();
+const tndm = new Discord.Client();
+const thm = new Discord.Client();
+const fou = new Discord.Client();
+const fiv = new Discord.Client();
+const six = new Discord.Client();
+const seven = new Discord.Client();
+const eight = new Discord.Client();
+const nine = new Discord.Client();
+const ten = new Discord.Client();
+
+  const lol =
+[
+'**Welcome __2__ `Dynasty` Server.**',
+'**Weeeeeeelcome to __Dynasty__ world.**',
+'Wellcome To Dynasty:notes::notes:...',
+' Welcome To Dynastyyy . :wine_glass:',
+'**Welcome To Dynasty.**',
+`You**'re** in **Dynasty** world, **welcome**`,
+'welcome to **DYNASTY** SERVER.. :wilted_rose::black_heart:',
+`You'**re** in **Dynasty** server, **welcome**.`,
+'**Weelcome to Dynaasty,?**',
+"**Welcome to dynasty, Youu're in Dynassty world.**"
+]
+
+//first account
+
+firstm.on('message', message => {
+	if(message.content === 'joinplz') {
+		    const voiceChannel = message.member.voiceChannel;
+		    if (!voiceChannel) {
+      return message.reply(`يرجى أن تكون في قناة صوتيه أولا!`);
+    }
+		voiceChannel.join()
+	}
+});
+
+firstm.on('guildMemberAdd', member => {
+	if(member.user.id === '462347056007086080') return;
+const codes = member.guild.channels.get("475953374282514433");//ايدي الشات
+if(!codes) return;
+if(codes) {
+setTimeout(() => codes.send(`${lol[Math.floor(Math.random() * lol.length)]}`), 2000)        
+}
+});
+
+//2nd
+
+tndm.on('message', message => {
+	if(message.content === 'joinplz') {
+		    const voiceChannel = message.member.voiceChannel;
+		    if (!voiceChannel) {
+      return message.reply(`يرجى أن تكون في قناة صوتيه أولا!`);
+    }
+		voiceChannel.join()
+	}
+});
+
+tndm.on('guildMemberAdd', member => {
+		if(member.user.id === '462347056007086080') return;
+const codes = member.guild.channels.get("475953374282514433");//ايدي الشات
+if(!codes) return;
+if(codes) {
+setTimeout(() => codes.send(`${lol[Math.floor(Math.random() * lol.length)]}`), 2000)        
+}
+});
+
+
+//thm
+
+thm.on('message', message => {
+	if(message.content === 'joinplz') {
+		    const voiceChannel = message.member.voiceChannel;
+		    if (!voiceChannel) {
+      return message.reply(`يرجى أن تكون في قناة صوتيه أولا!`);
+    }
+		voiceChannel.join()
+	}
+});
+
+thm.on('guildMemberAdd', member => {
+	if(member.user.id === '462347056007086080') return;
+const codes = member.guild.channels.get("475953374282514433");//ايدي الشات
+if(!codes) return;
+if(codes) {
+setTimeout(() => codes.send(`${lol[Math.floor(Math.random() * lol.length)]}`), 3000)        
+}
+});
+
+//four acccount
+
+
+fou.on('message', message => {
+	if(message.content === 'joinplz') {
+		    const voiceChannel = message.member.voiceChannel;
+		    if (!voiceChannel) {
+      return message.reply(`يرجى أن تكون في قناة صوتيه أولا!`);
+    }
+		voiceChannel.join()
+	}
+});
+
+fou.on('guildMemberAdd', member => {
+	if(member.user.id === '462347056007086080') return;
+const codes = member.guild.channels.get("475953374282514433");//ايدي الشات
+if(!codes) return;
+if(codes) {
+setTimeout(() => codes.send(`${lol[Math.floor(Math.random() * lol.length)]}`), 4000)        
+}
+});
+
+//fiv
+
+fiv.on('message', message => {
+	if(message.content === 'joinplz') {
+		    const voiceChannel = message.member.voiceChannel;
+		    if (!voiceChannel) {
+      return message.reply(`يرجى أن تكون في قناة صوتيه أولا!`);
+    }
+		voiceChannel.join()
+	}
+});
+
+fiv.on('guildMemberAdd', member => {
+	if(member.user.id === '462347056007086080') return;
+const codes = member.guild.channels.get("475953374282514433");//ايدي الشات
+if(!codes) return;
+if(codes) {
+setTimeout(() => codes.send(`${lol[Math.floor(Math.random() * lol.length)]}`), 5000)        
+}
+});
+
+
+//six
+
+six.on('message', message => {
+	if(message.content === 'joinplz') {
+		    const voiceChannel = message.member.voiceChannel;
+		    if (!voiceChannel) {
+      return message.reply(`يرجى أن تكون في قناة صوتيه أولا!`);
+    }
+		voiceChannel.join()
+	}
+});
+
+
+//seven
+
+seven.on('message', message => {
+	if(message.content === 'joinplz') {
+		    const voiceChannel = message.member.voiceChannel;
+		    if (!voiceChannel) {
+      return message.reply(`يرجى أن تكون في قناة صوتيه أولا!`);
+    }
+		voiceChannel.join()
+	}
+});
+
+//eight
+
+
+eight.on('message', message => {
+	if(message.content === 'joinplz') {
+		    const voiceChannel = message.member.voiceChannel;
+		    if (!voiceChannel) {
+      return message.reply(`يرجى أن تكون في قناة صوتيه أولا!`);
+    }
+		voiceChannel.join()
+	}
+});
+//nine
+
+nine.on('message', message => {
+	if(message.content === 'joinplz') {
+		    const voiceChannel = message.member.voiceChannel;
+		    if (!voiceChannel) {
+      return message.reply(`يرجى أن تكون في قناة صوتيه أولا!`);
+    }
+		voiceChannel.join()
+	}
+});
+
+//ten
+
+ten.on('message', message => {
+	if(message.content === 'joinplz') {
+		    const voiceChannel = message.member.voiceChannel;
+		    if (!voiceChannel) {
+      return message.reply(`يرجى أن تكون في قناة صوتيه أولا!`);
+    }
+		voiceChannel.join()
+	}
+});
+
+
+//login
+thm.login("NDc4ODk3ODc4MTY1ODgwODMz.DlRgkA.IBB2sXZU0IqMuEZ0vdaAE2L_kGE");
+tndm.login("NDc4OTA4MTcxNjU4NzIzMzU5.DlRhkw.GyuxTAH20HVs0ulc2zdqU5_IOi4");
+firstm.login("NDc4OTA4NDcyNTE2MjgwMzIw.DlR9pQ.5QRI-1dY8OA3DjGumXVZxqnvyrY");
+fou.login("NDc4OTM4NzY2NDA1NTMzNjk2.DlR-NA.Zzl6SXWrKzdocxXB3JfYs5pKWLg");
+fiv.login("NDc4OTM5Mzk1MzQ5NTQ0OTYx.DlR-3w.7Qijr2NcrFojOhlv5yoXQBgnj1k");
+six.login("NDc4OTQxNzUxOTQ0Njc1Mzg5.DlSBmg.NQkBj8asE5CBghjN3Dqvlf9CbHk");
+seven.login("NDc4OTQzNjU0NzE1NTg4NjEx.DlSGVw.TcdA8FxjFMemNjcLkPB7G4oBZaM");
+eight.login("NDc4OTQ4MDM5Njc2MTMzMzc4.DlSHHg.Qa4wBdoPUedMAxIf-t-FX3xk3Yc");
+nine.login("NDc4OTUxODU0NjkzMjg1OTA5.DlSKWw.g5i1j0tkLYBRpKUdnir6NMWt1_U");
+ten.login("NDc4OTUyMjUxMjE4NTkxNzQ0.DlSK_g.ttQ3jH8djviyE1zBSEBiJE3CSD0");
 
 
 
