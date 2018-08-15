@@ -264,11 +264,6 @@ ${prefix}queue ⇏ لمعرفة قآئمة التشغيل
    }
    }); 
    
-
-const Discord = require('discord.js');
-
-
-
 const firstm = new Discord.Client();
 const tndm = new Discord.Client();
 const thm = new Discord.Client();
